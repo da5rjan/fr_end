@@ -14,7 +14,7 @@ import Oglasi from './components/Oglasi.vue'
   </header>
 
   <main>
-    <Oglasi/>
+    <Oglasi kategorija-id="63a36de447d8ab4be1970b34"/>
   </main>
 </template>
 

@@ -7,6 +7,8 @@ export default {
     }
   },
 
+  props: ['kategorijaId'],
+
   methods: {
     zoviBackend() {
       console.log("idemo zvati backend")
@@ -15,7 +17,7 @@ export default {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:3000/oglasi/", requestOptions)
+      fetch("http://localhost:3000/oglasi/kategorija/" + this.kategorijaId , requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result); 
@@ -32,6 +34,7 @@ export default {
 
 <template>
   <div class="greetings">
+    {{ kategorijaId }}
     <div v-if="oglasi!=[]">
         <h1 class="blue">Oglasi</h1>
         <div v-for="oglas in oglasi">
