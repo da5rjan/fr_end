@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Kategorije from './components/Kategorije.vue'
+import Oglasi from './components/Oglasi.vue'
+
 </script>
 
 <template>
@@ -8,12 +9,12 @@ import TheWelcome from './components/TheWelcome.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You just did it!" />
+      <Kategorije />
     </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <Oglasi/>
   </main>
 </template>
 
