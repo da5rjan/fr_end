@@ -24,6 +24,18 @@ export default {
             this.oglas=result
           })
         .catch(error => console.log('error', error));
+    },
+
+    prosjekOcjena(ocjene) {
+      console.log("prosjek")
+      console.log(ocjene)
+      let suma = 0
+      let brojOcjena = 0
+      for (const oc of ocjene) {
+        suma=suma+oc;
+        brojOcjena++;
+      }
+      return suma/brojOcjena
     }
   },
 
@@ -42,7 +54,7 @@ export default {
         <div v-if="oglas!=null">
             {{oglas._id}}
             <h2>"naslov"{{oglas.naslov}}</h2>
-            <p> kategorija {{oglas.kategorija}} </p>  
+            <p> kategorija  <a :href="tobe">{{oglas.kategorijaDetalji[0].naziv}}</a> </p>  
             <p> text {{oglas.text}} </p>  
             <p> cijena {{oglas.cijena["$numberDecimal"]}}</p>  
             <p> ime {{oglas.korisnikDetalji[0].ime }}</p>
@@ -50,7 +62,7 @@ export default {
              <p> br_mob {{oglas.korisnikDetalji[0].br_mob }} </p>
              <p> grad {{oglas.korisnikDetalji[0].grad }}</p>
              <p> web_stranica <a :href="oglas.korisnikDetalji[0].web_stranica">{{oglas.korisnikDetalji[0].web_stranica}}</a> </p>
-            <p> ocijena {{oglas.ocijene}}</p>  
+            <p> ocijena {{prosjekOcjena(oglas.ocijene)}}</p>  
         </div>
     </ul>
   </div>
