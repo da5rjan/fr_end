@@ -2,7 +2,8 @@
 import Kategorije from './components/Kategorije.vue'
 import Oglasi from './components/Oglasi.vue'
 import Oglas from './components/Oglas.vue'
-
+import Korisnici from './components/Korisnici.vue'  
+import Korisnik from './components/Korisnik.vue'
 </script>
 
 <template>
@@ -18,6 +19,12 @@ import Oglas from './components/Oglas.vue'
     <Oglasi kategorija-id="63a36de447d8ab4be1970b34"/>
     <hr/>
     <Oglas oglas-id="63bc8cbc54a71d3d21a3353a"/>
+    <hr/>
+    <Korisnici/>
+
+    
+    <hr/>
+    
   </main>
 </template>
 
