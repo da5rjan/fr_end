@@ -21,6 +21,7 @@ import Korisnik from './components/Korisnik.vue'
     <Oglas oglas-id="63bc8cbc54a71d3d21a3353a"/>
     <hr/>
     <Korisnici/>
+    <Korisnik korisnik-id="63ab5c8bee4fb22bc7e6d78e"/>
 
     
     <hr/>
