@@ -23,7 +23,7 @@ export default {
         .then(response => response.json())
         .then(result => {
             console.log(result); 
-            this.korisnik=result
+            this.oglasi=result
           })
         .catch(error => console.log('error', error));
     }
@@ -36,12 +36,15 @@ export default {
 
 <template>
   <div class="greetings">
-    {{ oglasi }}
+    <h1>svi oglasi korisnika </h1>
+
     <div v-if="oglasi!=[]">
-        <h1 class="blue">Oglasi</h1>
+        
+         
         <div v-for="og in oglasi">
-            <h2>{{og.naslov}}</h2>
+             <h2>{{og.naslov}}</h2>
             <p>
+
                 {{og.text}}
             </p>
             <p>
@@ -49,10 +52,10 @@ export default {
             </p>
             
             <p>
-                {{g.ocijene}}
+                {{og.ocijene}}
             </p>
             <p>
-                {{g.kategorija}}
+                {{og.kategorija}}
             </p>
         </div>
     </div>
@@ -85,17 +88,8 @@ h3 {
 </style>
 
 
-    
-   
 
-
-
-        
-   
-  
  
-</template>
-
 
 <style scoped>
 h1 {

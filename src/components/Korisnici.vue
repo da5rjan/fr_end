@@ -36,10 +36,10 @@ export default {
    <h1> korisnici </h1>
    <div v-if="korisnici!=[]">
     <div  v-for = "kor in korisnici"> 
-        <h2>{{ kor._id }}  </h2>
-        <p> {{ kor.ime }}</p>
-        <p>{{kor.OIB }}</p>
-        <P>{{kor.broj_mobitela }}</P>
+        <h2>{{kor._id}}  </h2>
+        <p> {{kor.ime}}</p>
+        <p>{{kor.OIB}}</p>
+        <P>{{kor.broj_mobitela}}</p>
         <p>{{kor.ime }}</p>
         <p>{{kor.grd }}</p>
         <p>{{kor.e_mail }}</p>

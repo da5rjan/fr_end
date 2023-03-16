@@ -3,7 +3,9 @@ import Kategorije from './components/Kategorije.vue'
 import Oglasi from './components/Oglasi.vue'
 import Oglas from './components/Oglas.vue'
 import Korisnici from './components/Korisnici.vue'  
+import KorisnikOglasi from './components/KorisnikOglasi.vue'
 import Korisnik from './components/Korisnik.vue'
+
 </script>
 
 <template>
@@ -22,10 +24,8 @@ import Korisnik from './components/Korisnik.vue'
     <hr/>
     <Korisnici/>
     <Korisnik korisnik-id="63ab5c8bee4fb22bc7e6d78e"/>
-
-    
     <hr/>
-    
+    <KorisnikOglasi korisnik-id="63ab5d16ee4fb22bc7e6d78e"></KorisnikOglasi>
   </main>
 </template>
 
