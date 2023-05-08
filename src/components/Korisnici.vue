@@ -10,7 +10,7 @@ export default {
  
   methods: {
     zoviBackend() {
-      console.log("idemo zvati backend")
+
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -19,7 +19,6 @@ export default {
       fetch("http://localhost:3000/korisnici", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result); 
             this.korisnici=result
           })
         .catch(error => console.log('error', error));
@@ -39,7 +38,7 @@ export default {
         <h2>{{kor._id}}  </h2>
         <p> {{kor.ime}}</p>
         <p>{{kor.OIB}}</p>
-        <P>{{kor.broj_mobitela}}</p>
+        <p>{{kor.broj_mobitela}}</p>
         <p>{{kor.ime }}</p>
         <p>{{kor.grd }}</p>
         <p>{{kor.e_mail }}</p>

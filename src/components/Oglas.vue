@@ -11,7 +11,7 @@ export default {
 
   methods: {
     zoviBackend() {
-      console.log("idemo zvati backend")
+      
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -20,15 +20,13 @@ export default {
       fetch("http://localhost:3000/oglasi/" + this.oglasId, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result); 
-            this.oglas=result
+             this.oglas=result
           })
         .catch(error => console.log('error', error));
     },
 
     prosjekOcjena(ocjene) {
-      console.log("prosjek")
-      console.log(ocjene)
+     
       let suma = 0
       let brojOcjena = 0
       for (const oc of ocjene) {
@@ -54,7 +52,7 @@ export default {
         <div v-if="oglas!=null">
             {{oglas._id}}
             <h2>"naslov"{{oglas.naslov}}</h2>
-            <p> kategorija  <a :href="tobe">{{oglas.kategorijaDetalji[0].naziv}}</a> </p>  
+            <p> kategorija  <a :href="todo">{{oglas.kategorijaDetalji[0].naziv}}</a> </p>  
             <p> text {{oglas.text}} </p>  
             <p> cijena {{oglas.cijena["$numberDecimal"]}}</p>  
             <p> ime {{oglas.korisnikDetalji[0].ime }}</p>

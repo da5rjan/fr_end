@@ -1,5 +1,4 @@
 
- 
 <script>
 
 export default {
@@ -22,7 +21,6 @@ export default {
       fetch("http://localhost:3000/oglasi/korisnik/" + this.korisnikId , requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result); 
             this.oglasi=result
           })
         .catch(error => console.log('error', error));
@@ -86,10 +84,6 @@ h3 {
   }
 }
 </style>
-
-
-
- 
 
 <style scoped>
 h1 {

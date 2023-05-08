@@ -12,19 +12,16 @@ props: ['korisnikId'],
  
   methods: {
     zoviBackend() {
-      console.log("idemo zvati backend")
-      console.log(this.korisnikId)
+     
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
       };
-      console.log("http://localhost:3000/korisnici/" + this.korisnikId ,requestOptions)
       fetch("http://localhost:3000/korisnici/" + this.korisnikId ,requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log("stigli podatci o korisniku")
+       
 
-            console.log(result); 
             this.korisnik=result
           })
         .catch(error => console.log('error', error));
@@ -63,23 +60,6 @@ props: ['korisnikId'],
 
  
 </template>
-
-
- 
-
-
-
-
-    
-   
-
-
-
-        
-   
-  
- 
-
 
 <style scoped>
 h1 {

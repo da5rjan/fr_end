@@ -11,7 +11,7 @@ export default {
 
   methods: {
     zoviBackend() {
-      console.log("idemo zvati backend")
+     
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -20,7 +20,6 @@ export default {
       fetch("http://localhost:3000/oglasi/kategorija/" + this.kategorijaId , requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result); 
             this.oglasi=result
           })
         .catch(error => console.log('error', error));
