@@ -6,6 +6,7 @@ import Korisnici from './components/Korisnici.vue'
 import KorisnikOglasi from './components/KorisnikOglasi.vue'
 import Korisnik from './components/Korisnik.vue'
 import EditKorisnik from './components/EditKorisnik.vue'
+import EditKategorija from './components/EditKategorije.vue'
 </script>
 
 <template>
@@ -18,7 +19,8 @@ import EditKorisnik from './components/EditKorisnik.vue'
   </header>
 
   <main>
-    <hr>
+    <EditKategorija kategorija-id="63a36de447d8ab4be1970b34"/>
+    <hr/>
     <EditKorisnik korisnik-id="63adbfd54ef0cb47638c0470"/>
     <hr/>
     <Oglasi kategorija-id="63a36de447d8ab4be1970b34"/>
@@ -29,6 +31,7 @@ import EditKorisnik from './components/EditKorisnik.vue'
     <Korisnik korisnik-id="63ab5c8bee4fb22bc7e6d78e"/>
     <hr/>
     <KorisnikOglasi korisnik-id="63ab5d16ee4fb22bc7e6d78e"></KorisnikOglasi>
+
   </main>
 </template>
 

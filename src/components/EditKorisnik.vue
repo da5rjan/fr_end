@@ -7,9 +7,12 @@ export default {
     return {
       "korisnik": null,
       "ime":"",       
+      "prezime": "",
+      "username": "", 
       "korisnikOIB":"",
       "korisnik_email":"",
       "korisnik_grad":"",
+      "vrsta":"",
       "kratki_opis":""
     }
   },
@@ -34,13 +37,17 @@ props: ['korisnikId'],
 
             console.log(result); 
             this.korisnik=result
+            this.username=result.user_name
             this.ime=result.ime
+            this.prezime = result.prezime
+            this.adresa=result.adresa
             this.grad=result.grad
             this.korisnikOIB = result.OIB
             this.e_mail = result.e_mail
             this.korisnik_grad=result.grad
             this.broj_mobitela = result.broj_mobitela
             this.kratki_opis=result.kratki_opis
+            this.vrsta =result.vrsta
           })
         .catch(error => console.log('error', error));
     },
@@ -48,6 +55,15 @@ props: ['korisnikId'],
       console.log("treba poslat podatke")
       const updateData = {}
       updateData.ime=this.ime
+      updateData.user_name = this.korisnik.user_name
+      updateData.prezime =this.prezime
+      updateData.broj_mobitela = this.broj_mobitela
+      updateData.grad = this.korisnik_grad
+      updateData.e_mail = this.e_mail
+      updateData.adresa=this.adresa
+      updateData.kratki_opis = this.kratki_opis
+      updateData.korisnikOIB = this.korisnikOIB
+      updateData.vrsta= "stari korisnik"
       console.log(updateData)
       console.log("idemo zvati backend")
       console.log(this.korisnikId)
@@ -82,10 +98,20 @@ props: ['korisnikId'],
     {{ korisnikId }}
     <div v-if="korisnik!=null">
         <h1 class="blue">korisnik</h1>
-      <h1> ured korsinika</h1>
+      <h1> uredi korsinika</h1>
       <form>
         <h2>{{ime}}</h2>
+
         <label for="imeinput">Ime</label><input id="imeinput" v-model="ime">
+         <h1>korisnik.prezime</h1>
+        <p> {{korisnik.prezime }}</p>
+        <input v-model ="prezime" >
+        <h1>korisnik user name </h1>
+        <p> {{korisnik.user_name }}</p>
+        <input v-model = "korisnik.user_name" />
+        <h1>korisnik adresa</h1>
+        <p> {{ korisnik.adresa }}</p>
+        <input v-model = "korisnik.adresa"/>
         <h1> OIB Korisnika </h1>
         <p>{{korisnik.OIB }}</p>
         <input v-model="korisnikOIB">
