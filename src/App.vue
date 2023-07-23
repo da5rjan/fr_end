@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Kategorije from './components/Kategorije.vue'
+import EditOglas from './components/EditOglas.vue'
 import Oglasi from './components/Oglasi.vue'
 import Oglas from './components/Oglas.vue'
 import Korisnici from './components/Korisnici.vue'  
@@ -19,8 +20,11 @@ import EditKategorija from './components/EditKategorije.vue'
   </header>
 
   <main>
+    <EditOglas oglas-id="63ab5a5183dc57faef759127"/>
+     <hr/>
     <EditKategorija kategorija-id="63a36de447d8ab4be1970b34"/>
     <hr/>
+
     <EditKorisnik korisnik-id="63adbfd54ef0cb47638c0470"/>
     <hr/>
     <Oglasi kategorija-id="63a36de447d8ab4be1970b34"/>
