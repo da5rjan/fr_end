@@ -18,7 +18,7 @@ export default {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:3000/oglasi/korisnik/" + this.korisnikId , requestOptions)
+      fetch("http://localhost:3000/kategorije/korisnik/" + this.korisnikId , requestOptions)
         .then(response => response.json())
         .then(result => {
             this.oglasi=result
