@@ -1,5 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/views/Home.vue";
+import Kategorija from "@/views/Kategorija.vue";
 import About from "@/views/About.vue";
 import Kitchensink from "@/views/Kitchensink.vue";
 
@@ -8,6 +9,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/kategorija",
+    name: "Kategorija",
+    component: Kategorija, 
   },
   {
     path: "/about",

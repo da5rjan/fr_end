@@ -18,8 +18,12 @@ export default {
         .then(response => response.json())
         .then(result => {
             this.kategorije=result
+
           })
         .catch(error => console.log('error', error));
+    },
+    kategorijaLink(kat) {
+      return "/kategorija/" + kat._id
     }
   },
 
@@ -35,10 +39,12 @@ export default {
     <h1>Kategorije</h1>
     <ul>
         <div v-for="kategorija in kategorije">
+          <router-link :to="kategorijaLink(kategorija)"> 
             <h2>{{ kategorija.naziv}}</h2>
-            <p>
-                {{kategorija.opis}}
-            </p>
+          </router-link> 
+          <p>
+            {{kategorija.opis}}
+          </p>
         </div>
     </ul>
   </div>
