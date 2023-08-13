@@ -33,7 +33,6 @@ export default {
 
 <template>
   <div class="greetings">
-    {{ kategorijaId }}
     <div v-if="oglasi!=[]">
         <h1 class="blue">Oglasi</h1>
         <div v-for="oglas in oglasi">

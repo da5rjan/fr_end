@@ -3,15 +3,15 @@ import Home from "@/views/Home.vue";
 import Kategorija from "@/views/Kategorija.vue";
 import About from "@/views/About.vue";
 import Kitchensink from "@/views/Kitchensink.vue";
-
-const routes = [
+ 
+ const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
   },
   {
-    path: "/kategorija",
+    path: "/kategorija/:id",
     name: "Kategorija",
     component: Kategorija, 
   },
@@ -24,8 +24,8 @@ const routes = [
     path: "/kitchensink",
     name: "Kitchensink",
     component: Kitchensink,
-  },
 
+  },
 
 ];
 

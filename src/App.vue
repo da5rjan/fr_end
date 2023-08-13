@@ -1,13 +1,4 @@
 <script setup lang="ts">
-import Kategorije from './components/Kategorije.vue'
-import EditOglas from './components/EditOglas.vue'
-import Oglasi from './components/Oglasi.vue'
-import Oglas from './components/Oglas.vue'
-import Korisnici from './components/Korisnici.vue'  
-import KorisnikOglasi from './components/KorisnikOglasi.vue'
-import Korisnik from './components/Korisnik.vue'
-import EditKorisnik from './components/EditKorisnik.vue'
-import EditKategorija from './components/EditKategorije.vue'
  </script>
 
 <template>
@@ -24,7 +15,6 @@ import EditKategorija from './components/EditKategorije.vue'
       <router-link to="/about">About</router-link> |
       <router-link to="/kitchensink">Kitchensink</router-link>
     </div>
-
     <router-view />
 
   </main>

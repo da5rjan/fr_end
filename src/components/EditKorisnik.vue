@@ -86,8 +86,9 @@ props: ['korisnikId'],
 
   mounted: function(){
         this.zoviBackend()
-    }
   }
+}
+
 </script>
 
 <template>
