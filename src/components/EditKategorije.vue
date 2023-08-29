@@ -56,6 +56,10 @@ export default {
     mounted: function(){
         this.zoviBackend()
     }
+    
+        
+    
+    
 }
 
 </script>
