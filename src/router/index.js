@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/views/Home.vue";
 import Kategorija from "@/views/Kategorija.vue";
+import Oglas from "@/views/Oglas.vue";
 import About from "@/views/About.vue";
 import Kitchensink from "@/views/Kitchensink.vue";
  
@@ -15,6 +16,12 @@ import Kitchensink from "@/views/Kitchensink.vue";
     name: "Kategorija",
     component: Kategorija, 
   },
+  {
+    path: "/oglas/:id",
+    name: "Oglas",
+    component: Oglas, 
+  },
+
   {
     path: "/about",
     name: "About",

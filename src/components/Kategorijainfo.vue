@@ -4,11 +4,13 @@
 export default {
   data() {
     return {
-      "oglas": null
+      "naziv": null, 
+      "opis": null,
+      "kategorija": null
     }
   },
 
-  props: ['oglasId'],
+  props: ['kategorijaId'],
 
   methods: {
     zoviBackend() {
@@ -17,25 +19,18 @@ export default {
         method: 'GET',
         redirect: 'follow'
       };
-
-      fetch("http://localhost:3000/oglasi/" + this.oglasId, requestOptions)
+      console.log("my kategorijaId is", this.kategorijaId)
+      fetch("http://localhost:3000/kategorije/" + this.kategorijaId, requestOptions)
         .then(response => response.json())
         .then(result => {
-             this.oglas=result
+            console.log("received info for kategorija", result)
+             this.kategorija = result
+             this.naziv = result.naziv
+             this.opis = result.opis
           })
         .catch(error => console.log('error', error));
     },
 
-    prosjekOcjena(ocjene) {
-     
-      let suma = 0
-      let brojOcjena = 0
-      for (const oc of ocjene) {
-        suma=suma+oc;
-        brojOcjena++;
-      }
-      return suma/brojOcjena
-    }
   },
 
   mounted: function(){
@@ -45,3 +40,14 @@ export default {
 
 }
 </script>
+<template>
+   
+    <h1>{{ naziv }}</h1>
+    <div>
+        {{ opis }}
+    </div>
+
+
+
+
+</template>

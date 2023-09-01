@@ -36,7 +36,10 @@ export default {
     <div v-if="oglasi!=[]">
         <h1 class="blue">Oglasi</h1>
         <div v-for="oglas in oglasi">
-            <h2>{{oglas.naslov}}</h2>
+            <router-link :to="/oglas/+oglas._id"> 
+              <h2>{{oglas.naslov}}</h2>
+            </router-link> 
+  
             <p>
                 {{oglas.text}}
             </p>

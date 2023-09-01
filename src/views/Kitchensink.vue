@@ -29,6 +29,7 @@ import EditKategorija from '@/components/EditKategorije.vue'
     <Korisnik korisnik-id="63ab5c8bee4fb22bc7e6d78e"/>
     <hr/>
     <KorisnikOglasi korisnik-id="63ab5d16ee4fb22bc7e6d78e"></KorisnikOglasi>
+    <hr> 
 
 
 </template>
