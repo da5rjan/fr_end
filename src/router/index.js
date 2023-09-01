@@ -4,6 +4,7 @@ import Kategorija from "@/views/Kategorija.vue";
 import Oglas from "@/views/Oglas.vue";
 import About from "@/views/About.vue";
 import Kitchensink from "@/views/Kitchensink.vue";
+import EditKategorije from "@/views/EditKategorije.vue"
  
  const routes = [
   {
@@ -31,8 +32,12 @@ import Kitchensink from "@/views/Kitchensink.vue";
     path: "/kitchensink",
     name: "Kitchensink",
     component: Kitchensink,
-
   },
+  {
+  path: "/editKategorije/:id",
+  name: "editKategorije",
+  component: EditKategorije,
+  }
 
 ];
 

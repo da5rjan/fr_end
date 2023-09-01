@@ -1,11 +1,19 @@
 <script setup lang="ts">
     import  Oglasi from '@/components/Oglasi.vue'
     import KategorijaInfo from '@/components/Kategorijainfo.vue'
-</script>
+ </script>
+
+
 
 
 <template>
     <h1>Kategorija Page</h1>
     <KategorijaInfo v-bind:kategorijaId="$route.params.id"/>
     <Oglasi v-bind:kategorijaId="$route.params.id" />
+    
+    <router-link :to="/editKategorije/+$route.params.id" >   
+        Edit Kategorije        
+    </router-link> 
+
+    
 </template>
