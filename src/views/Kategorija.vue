@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import  Oglasi from '@/components/Oglasi.vue'
     import KategorijaInfo from '@/components/Kategorijainfo.vue'
+    
  </script>
 
 
@@ -13,6 +14,10 @@
     
     <router-link :to="/editKategorije/+$route.params.id" >   
         Edit Kategorije        
+    </router-link> 
+    <br/>
+    <router-link :to="/noviOglas/+$route.params.id" >   
+        Predaj novi oglas u ovu kategoriju        
     </router-link> 
 
     

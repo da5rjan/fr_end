@@ -5,6 +5,8 @@ import Oglas from "@/views/Oglas.vue";
 import About from "@/views/About.vue";
 import Kitchensink from "@/views/Kitchensink.vue";
 import EditKategorije from "@/views/EditKategorije.vue"
+import EditOglas from"@/views/EditOglas.vue"
+import NoviOglas from"@/views/NoviOglas.vue"
  
  const routes = [
   {
@@ -37,8 +39,17 @@ import EditKategorije from "@/views/EditKategorije.vue"
   path: "/editKategorije/:id",
   name: "editKategorije",
   component: EditKategorije,
+  },
+  {
+  path: "/editOglas/:id",
+  name: "editOglas",
+  component: EditOglas,
+  },
+  {
+    path: "/noviOglas/:id",
+    name: "noviOglas",
+    component: NoviOglas,
   }
-
 ];
 
 const router = createRouter({
