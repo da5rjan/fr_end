@@ -7,5 +7,5 @@
 
 
 <template>
-       <NoviOglas/>
+       <NoviOglas v-bind:kategorijaId="$route.params.id"/>
 </template>
