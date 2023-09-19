@@ -6,6 +6,7 @@ import About from "@/views/About.vue";
 import Kitchensink from "@/views/Kitchensink.vue";
 import EditKategorije from "@/views/EditKategorije.vue"
 import EditOglas from"@/views/EditOglas.vue"
+import NovaKategorija from "@/views/NovaKategorija.vue"
 import NoviOglas from"@/views/NoviOglas.vue"
  
  const routes = [
@@ -18,8 +19,10 @@ import NoviOglas from"@/views/NoviOglas.vue"
     path: "/kategorija/:id",
     name: "Kategorija",
     component: Kategorija, 
+  
   },
-  {
+
+  {  
     path: "/oglas/:id",
     name: "Oglas",
     component: Oglas, 
@@ -49,6 +52,11 @@ import NoviOglas from"@/views/NoviOglas.vue"
     path: "/noviOglas/:id",
     name: "noviOglas",
     component: NoviOglas,
+  },
+  {
+    path: "/novaKategorija",
+    name: "novaKategorija",
+    component: NovaKategorija,
   }
 ];
 
