@@ -14,7 +14,7 @@ export default {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:3000/kategorije/", requestOptions)
+      fetch("http://localhost:3000/category", requestOptions)
         .then(response => response.json())
         .then(result => {
             this.kategorije=result
@@ -37,14 +37,13 @@ export default {
 
 <template>
   <div class="greetings">
-    <h1>Kategorije</h1>
     <ul>
         <div v-for="kategorija in kategorije">
           <router-link :to="kategorijaLink(kategorija)"> 
-            <h2>{{ kategorija.naziv}}</h2>
+            <h2>{{ kategorija.name}}</h2>
           </router-link> 
           <p>
-            {{kategorija.opis}}
+            {{kategorija.description}}
           </p>
         </div>
     </ul>

@@ -10,6 +10,16 @@ export default {
   props: ['kategorijaId'],
 
   methods: {
+    oglasLink(oglas) {
+      if (this.$store.state.user) {
+        if (oglas.creator===this.$store.state.user.userId) 
+        {
+          return "/mojOglas/"+oglas._id          
+        }
+      }
+      return "/oglas/"+oglas._id          
+    },
+    
     zoviBackend() {
      
       var requestOptions = {
@@ -17,7 +27,7 @@ export default {
         redirect: 'follow'
       };
 
-      fetch("http://localhost:3000/oglasi/kategorija/" + this.kategorijaId , requestOptions)
+      fetch("http://localhost:3000/ad/category/" + this.kategorijaId , requestOptions)
         .then(response => response.json())
         .then(result => {
             this.oglasi=result
@@ -36,12 +46,12 @@ export default {
     <div v-if="oglasi!=[]">
         <h1 class="blue">Oglasi</h1>
         <div v-for="oglas in oglasi">
-            <router-link :to="/oglas/+oglas._id"> 
-              <h2>{{oglas.naslov}}</h2>
+            <router-link :to="oglasLink(oglas)"> 
+              <h2>{{oglas.title}}</h2>
             </router-link> 
   
             <p>
-                {{oglas.text}}
+                {{oglas.description}}
             </p>
         </div>
     </div>

@@ -5,8 +5,8 @@
 
 <template>
     <h1>Uredi kategoriju</h1>
-
-    <EditKategorije v-bind:kategorijaId="$route.params.id"/>
+    
+    <EditKategorije v-bind:kategorijaId="$route.params.id" v-if="$store.state.user && $store.state.user.role=='admin'"/>
 
     <router-link :to="/kategorija/+$route.params.id" >   
       Nazad na Kategoriju

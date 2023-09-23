@@ -4,8 +4,8 @@
 export default {
   data() {
     return {
-      "naziv": null, 
-      "opis": null,
+      "name": null, 
+      "description": null,
       "kategorija": null
     }
   },
@@ -20,13 +20,13 @@ export default {
         redirect: 'follow'
       };
       console.log("my kategorijaId is", this.kategorijaId)
-      fetch("http://localhost:3000/kategorije/" + this.kategorijaId, requestOptions)
+      fetch("http://localhost:3000/category/" + this.kategorijaId, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log("received info for kategorija", result)
              this.kategorija = result
-             this.naziv = result.naziv
-             this.opis = result.opis
+             this.name = result.name
+             this.description = result.description
           })
         .catch(error => console.log('error', error));
     },
@@ -43,12 +43,8 @@ export default {
 </script>
 <template>
    
-    <h1>{{ naziv }}</h1>
+    <h1>{{ name }}</h1>
     <div>
-        {{ opis }}
+        {{ description }}
     </div>
-
-
-
-
 </template>

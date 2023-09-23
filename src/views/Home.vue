@@ -8,7 +8,7 @@
     
     <Kategorije />
     <div> 
-        <router-link to="/novaKategorija">
+        <router-link v-if="$store.state.user && $store.state.user.role=='admin'" to="/novaKategorija">
             Nova kategorija
         </router-link>
 

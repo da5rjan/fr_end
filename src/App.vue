@@ -1,5 +1,19 @@
-<script setup lang="ts">
- </script>
+<script>
+export default {
+  data() {
+    return {
+    }
+  },
+
+  methods: {
+    odjava() {
+      console.log("odjava")
+      this.$store.commit('clearUser')
+      this.$router.push("/")
+    }
+  }
+}
+</script>
 
 <template>
   <header>
@@ -12,8 +26,11 @@
   <main>
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <span v-if="$store.state.user == null" > <router-link to="/login">Prijava</router-link> |</span>
+      <span v-if="$store.state.user" @click="odjava()">Odjava |</span> 
+      <span v-if="$store.state.user == null" ><router-link to="/registracija">Registracija</router-link> |</span>
       <router-link to="/about">About</router-link> |
-      <router-link to="/kitchensink">Kitchensink</router-link>
+      <span v-if="$store.state.user">{{ $store.state.user.userName }} </span>
     </div>
     <router-view />
 

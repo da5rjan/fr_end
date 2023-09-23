@@ -3,7 +3,16 @@
 export default {
   data() {
     return {
-      "oglas": null
+      "oglas": null,
+      "title": "",
+      "description": "",
+      "price": 0,  // price["$numberDecimal"] 
+      "ime": "",
+      "prezime": "",
+      "email": "",
+      "grad":"",
+      "adresa": ""
+
     }
   },
 
@@ -11,16 +20,26 @@ export default {
 
   methods: {
     zoviBackend() {
-      
+      console.log("zovem backend")      
       var requestOptions = {
         method: 'GET',
         redirect: 'follow'
       };
 
-      fetch("http://localhost:3000/oglasi/" + this.oglasId, requestOptions)
+      fetch("http://localhost:3000/ad/" + this.oglasId, requestOptions)
         .then(response => response.json())
         .then(result => {
+             console.log("stigo oglas", result)      
              this.oglas=result
+             this.title = result.title
+             this.description = result.description
+             this.price = result.price["$numberDecimal"]
+             this.ime = result.creator.firstName
+             this.prezime = result.creator.lastName
+             this.email = result.creator.email
+             this.grad = result.creator.city
+             this.adresa = result.creator.address
+             console.log("result", result)
           })
         .catch(error => console.log('error', error));
     },
@@ -39,7 +58,6 @@ export default {
 
   mounted: function(){
         this.zoviBackend()
-
     }
 
 }
@@ -50,17 +68,14 @@ export default {
     <h1>naslov</h1>
     <ul>
         <div v-if="oglas!=null">
-            {{oglas._id}}
-            <h2>"naslov"{{oglas.naslov}}</h2>
-            <p> kategorija  <a :href="todo">{{oglas.kategorijaDetalji[0].naziv}}</a> </p>  
-            <p> text {{oglas.text}} </p>  
-            <p> cijena {{oglas.cijena["$numberDecimal"]}}</p>  
-            <p> ime {{oglas.korisnikDetalji[0].ime }}</p>
-            <p> prezime {{oglas.korisnikDetalji[0].prezime }}</p>
-             <p> br_mob {{oglas.korisnikDetalji[0].br_mob }} </p>
-             <p> grad {{oglas.korisnikDetalji[0].grad }}</p>
-             <p> web_stranica <a :href="oglas.korisnikDetalji[0].web_stranica">{{oglas.korisnikDetalji[0].web_stranica}}</a> </p>
-            <p> ocijena {{prosjekOcjena(oglas.ocijene)}}</p>  
+            <h2>{{title}}</h2>
+            <p> {{description}} </p>  
+            <p> cijena {{price}}</p>  
+            <p> ime {{ime}}</p>
+            <p> prezime {{prezime}}</p>
+            <p> email {{email}}</p>
+            <p> grad {{grad}}</p>
+            <p> adresa {{adresa}}</p>
         </div>
     </ul>
   </div>

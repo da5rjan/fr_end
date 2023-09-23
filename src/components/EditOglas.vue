@@ -2,7 +2,7 @@
 export default {
     data () {
         return {
-            "naslov": null,
+            "naslov": "",
             "text": "" ,
             "kategorija": "",
             "cijena":"",
@@ -18,20 +18,18 @@ export default {
                 method: 'GET',
                 redirect: 'follow'
             };
-            console.log("http://localhost:3000/oglasi/" + this.oglasId ,requestOptions)
-            fetch("http://localhost:3000/oglasi/" + this.oglasId ,requestOptions)
+            console.log("http://localhost:3000/ad/" + this.oglasId ,requestOptions)
+            fetch("http://localhost:3000/ad/" + this.oglasId ,requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log("----------------------stigli su podaci o oglasima")
                     console.log(result)
-                    this.naslov = result.naslov
-                    this.text = result.text
+                    this.naslov = result.title
+                    this.text = result.description
                     this.kategorija = result.kategorija
-                    this.cijena =result.cijena
+                    this.cijena =result.price.$numberDecimal
                     this.ocijene= result.ocijene
-                    this.korisnik = result.korisnik
-                
-                
+                    this.korisnik = result.creator
             })
 
         },
@@ -39,22 +37,22 @@ export default {
         console.log("salji podatke  ")
             const updateData = {} 
 
-            updateData.naslov = this.naslov
-            updateData.text = this.text
-            updateData.korisnik = this.korisnik
-            updateData.cijena = this.cijena 
-            updateData.ocijene = this.ocijene
-            updateData.kategorija = this.kategorija
+            updateData.title = this.naslov
+            updateData.description = this.text
+            updateData.price = this.cijena 
             console.log(updateData)
             var requestOptions = {
                 method: 'PUT',
                 redirect: 'follow',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                        'Content-Type': 'application/json', 
+                        'Authorization': 'Bearer '+ this.$store.state.user.token
+                },
                 body: JSON.stringify(updateData)
             }
         console.log(updateData)
-        console.log("http://localhost:3000/oglasi/" + this.oglasId ,requestOptions)
-        fetch("http://localhost:3000/oglasi/" + this.oglasId  ,requestOptions)
+        console.log("http://localhost:3000/ad/" + this.oglasId ,requestOptions)
+        fetch("http://localhost:3000/ad/" + this.oglasId  ,requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log("oglas  promijenjen")
@@ -71,23 +69,16 @@ export default {
 }
 </script>
 <template>
-edit oglasa 
-<h1>edit oglas</h1>
-{{ oglasID }}
 <form>
-<h2> 
-    {{ oglas }}
+    <h2> Naslov </h2>
     <label for = "inputNaziv"> Naziv</label>
     <input name="inputNaziv" v-model = "naslov"/>
-   <h1> cijena </h1>
-   {{cijena }}
+   <h2> cijena </h2>
    <label for = "inputCIjena">Cijena </label> 
    <input name="inputCijena" v-model ="cijena" />
 
-    <h1>opis</h1> 
+    <h2>opis</h2> 
 
-    </h2>
-    {{ text  }}
 
    <label for ="inputopis"/> 
     

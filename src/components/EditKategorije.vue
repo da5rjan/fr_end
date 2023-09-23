@@ -17,34 +17,37 @@ export default {
                 method: 'GET',
                 redirect: 'follow'
             };
-            console.log("http://localhost:3000/kategorije/" + this.kategorijaId ,requestOptions)
-            fetch("http://localhost:3000/kategorije/" + this.kategorijaId ,requestOptions)
+            console.log("http://localhost:3000/category/" + this.kategorijaId ,requestOptions)
+            fetch("http://localhost:3000/category/" + this.kategorijaId ,requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log("stigli su podaci o kategorijama")
                     console.log(result)
                     this.kategorija = result
-                    this.naziv = result.naziv
-                    this.opis = result.opis
-                    this.redoslijed =result.redoslijed
+                    this.naziv = result.name
+                    this.opis = result.description
+                    this.redoslijed =result.order
             })
 
         },
         posalji_pod(){
             console.log("salji podatke  ")
             const updateData = {} 
-            updateData.naziv = this.naziv
-            updateData.redoslijed = this.redoslijed
-            updateData.opis = this.opis
+            updateData.name = this.naziv
+            updateData.order = this.redoslijed
+            updateData.description = this.opis
             var requestOptions = {
                 method: 'PUT',
                 redirect: 'follow',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                        'Content-Type': 'application/json', 
+                        'Authorization': 'Bearer '+ this.$store.state.user.token
+                },
                 body: JSON.stringify(updateData)
             }
         console.log(updateData)
         console.log("http://localhost:3000/kategorije/" + this.kategorija._id ,requestOptions)
-        fetch("http://localhost:3000/kategorije/" + this.kategorija._id  ,requestOptions)
+        fetch("http://localhost:3000/category/" + this.kategorija._id  ,requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log("kategorija promijenjena")
@@ -63,23 +66,14 @@ export default {
 }
 
 </script>
-
-
 <template>
-    <h1> edit kategorije</h1>
-    {{ kategorijaId }}  
-    <h1> uredi kategoriju</h1>
     <form>
-    <h2>
-        {{  kategorija }}
-    </h2>
+    <h2>Ime</h2>
     <label for="inputNaziv"/>
     <input name="inputNaziv" v-model="naziv"/>
-    <h1> opis</h1>
-    <p>{{opis}}</p>
+    <h2>Opis</h2>
     <input v-model = "opis"/>
-    <h1>Redoslijed</h1>
-    <p>{{redoslijed}}</p>
+    <h2>Redoslijed</h2>
     <label for="inputredoslijed"/>
     <input name="inputredoslijed" v-model="redoslijed"/>
     </form> 

@@ -8,16 +8,16 @@
 
 
 <template>
-    <h1>Kategorija Page</h1>
     <KategorijaInfo v-bind:kategorijaId="$route.params.id"/>
     <Oglasi v-bind:kategorijaId="$route.params.id" />
     
-    <router-link :to="/editKategorije/+$route.params.id" >   
-        Edit Kategorije        
+    <br/>
+    <router-link v-if="$store.state.user" :to="/noviOglas/+$route.params.id" >   
+        Predaj novi oglas u ovu kategoriju        
     </router-link> 
     <br/>
-    <router-link :to="/noviOglas/+$route.params.id" >   
-        Predaj novi oglas u ovu kategoriju        
+    <router-link v-if="$store.state.user && $store.state.user.role=='admin'"  :to="/editKategorije/+$route.params.id" >   
+        Edit Kategorije        
     </router-link> 
 
     
