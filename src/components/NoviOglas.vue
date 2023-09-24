@@ -4,7 +4,9 @@
             return {
                 "title": "",
                 "description": "" ,
-                "price":""
+                "price": "",
+                "saljem" : false,
+                "greska" : null
             }
         }, 
 
@@ -25,14 +27,24 @@
                     },
                     body: JSON.stringify(updateData)
                 }
+                this.saljem = true
+                this.greska = false
                 console.log("http://localhost:3000/ad/",requestOptions)
                 fetch("http://localhost:3000/ad/" ,requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     console.log("oglas je predan")
                     console.log(result)
+                    this.saljem = false
+                    this.greska = false
+                    this.$router.push("/kategorija/" + this.kategorijaId)
                 })
-                .catch(error => console.log('error in oglas predaja', error));
+                .catch(error => {
+                    console.log('error in oglas predaja', error)
+                    this.saljem = false
+                    this.greska = error.message
+                })
+
             }
         }
     }
@@ -69,9 +81,17 @@
             </tr>
         </table>
     </form> 
-    <div>
+    <div v-if="! saljem">
         <button @click="posalji_pod()">posalji</button>  
     </div>
+    <div v-if="saljem">
+        Saljem podatke ..  
+    </div>
+    <div v-if="greska">
+        Doslo je do greske: {{ greska }}   
+    </div>
+
+
 </template>
 
 

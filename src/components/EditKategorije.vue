@@ -52,6 +52,8 @@ export default {
             .then(result => {
                 console.log("kategorija promijenjena")
                 console.log(result)
+                this.$router.push("/kategorija/" + this.kategorija._id)
+
             })
             .catch(error => console.log('error in katogorija update', error));
         }

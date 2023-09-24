@@ -4,7 +4,9 @@ export default {
         return {
             "name": "" ,
             "description": "",
-            "order": 1
+            "order": 1,
+            "greska": null,
+            "saljem": false
         }
     },
     methods :{
@@ -24,13 +26,21 @@ export default {
                 body: JSON.stringify(updateData)
             }
             console.log(updateData)
+            this.greska = null
+            this.saljem = true
             fetch("http://localhost:3000/category/"  ,requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     console.log("kategorija dodana")
                     console.log(result)
+                    this.saljem = false
+                    this.$router.push("/")
                 })
-                .catch(error => console.log('error in katogorija add', error));
+                .catch(error => {
+                    this.saljem = false
+                    this.greska = error.message
+                    console.log('error in katogorija add', error)
+                });
         }
     },
 }
@@ -67,6 +77,12 @@ export default {
     </form> 
     <div>
         <button @click="posalji_pod()">posalji</button>  
+    </div>
+    <div v-if="saljem">
+        Saljem podatke ..  
+    </div>
+    <div v-if="greska">
+        Doslo je do greske: {{ greska }}   
     </div>
 
 
