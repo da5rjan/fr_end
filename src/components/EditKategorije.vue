@@ -5,7 +5,9 @@ export default {
             "kategorija": null,
             "naziv": "" ,
             "opis": "",
-            "redoslijed":""
+            "redoslijed":"", 
+            "saljem": false,
+            "greska": null
         }
     },
     props: ['kategorijaId'],
@@ -45,26 +47,30 @@ export default {
                 },
                 body: JSON.stringify(updateData)
             }
-        console.log(updateData)
-        console.log("http://localhost:3000/kategorije/" + this.kategorija._id ,requestOptions)
-        fetch("http://localhost:3000/category/" + this.kategorija._id  ,requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                console.log("kategorija promijenjena")
-                console.log(result)
-                this.$router.push("/kategorija/" + this.kategorija._id)
+            this.saljem = true
+            this.greska = null
+            console.log(updateData)
+            console.log("http://localhost:3000/kategorije/" + this.kategorija._id ,requestOptions)
+            fetch("http://localhost:3000/category/" + this.kategorija._id  ,requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    console.log("kategorija promijenjena")
+                    console.log(result)
+                    this.saljem = false
+                    this.greska = null
+                    this.$router.push("/kategorija/" + this.kategorija._id)
 
-            })
-            .catch(error => console.log('error in katogorija update', error));
+                })
+                .catch(error => {
+                    console.log('error in katogorija update', error)
+                    this.saljem = false
+                    this.greska = error.message
+                });
         }
     },
     mounted: function(){
         this.zoviBackend()
     }
-    
-        
-    
-    
 }
 
 </script>
@@ -79,11 +85,14 @@ export default {
     <label for="inputredoslijed"/>
     <input name="inputredoslijed" v-model="redoslijed"/>
     </form> 
-    <div>
-    <button @click="posalji_pod()">posalji</button>  
-
+    <div v-if="! saljem">
+        <button @click="posalji_pod()">posalji</button>  
     </div>
-
-
+    <div v-if="saljem">
+        Saljem podatke ..  
+    </div>
+    <div v-if="greska">
+        Doslo je do greske: {{ greska }}   
+    </div>
 </template>
 

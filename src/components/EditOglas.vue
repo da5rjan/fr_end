@@ -6,7 +6,9 @@ export default {
             "text": "" ,
             "kategorija": "",
             "cijena":"",
-            "ocijne":""
+            "ocijne":"",
+            "saljem": false,
+            "greska": null
         }
     },
     props: ['oglasId'],
@@ -50,17 +52,25 @@ export default {
                 },
                 body: JSON.stringify(updateData)
             }
-        console.log(updateData)
-        console.log("http://localhost:3000/ad/" + this.oglasId ,requestOptions)
-        fetch("http://localhost:3000/ad/" + this.oglasId  ,requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                console.log("oglas  promijenjen")
-                console.log(result)
-            })
-            .catch(error => console.log('error in oglas  update', error));
-        }
-        
+            this.saljem = true
+            this.greska = null
+            console.log(updateData)
+            console.log("http://localhost:3000/ad/" + this.oglasId ,requestOptions)
+            fetch("http://localhost:3000/ad/" + this.oglasId  ,requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    console.log("oglas  promijenjen")
+                    console.log(result)
+                    this.saljem = false
+                    this.greska = null
+                    this.$router.push("/oglas/" + this.oglasId)
+                })
+                .catch(error => {
+                    console.log('error in oglas  update', error)
+                    this.greska = error.message
+                    this.saljem = false
+                });
+            }
     },
         
     mounted: function(){
@@ -84,11 +94,14 @@ export default {
     
    <input name = "inputopis" v-model = "text"/>
     </form>
-    
- 
-
-<div>
-    <button @click="posalji_pod()">posalji</button>  
-
+    <div v-if="! saljem">
+        <button @click="posalji_pod()">posalji</button>  
     </div>
+    <div v-if="saljem">
+        Saljem podatke ..  
+    </div>
+    <div v-if="greska">
+        Doslo je do greske: {{ greska }}   
+    </div>
+
 </template>
