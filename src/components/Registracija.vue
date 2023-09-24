@@ -11,7 +11,9 @@ export default {
             "oIB": "",
             "city": "",
             "address": "",
-            "description": ""
+            "description": "",
+            "saljem": false,
+            "greska": null
         }
     },
     methods :{
@@ -27,14 +29,22 @@ export default {
                 body: JSON.stringify(updateData)
             }
             console.log(updateData)
+            this.saljem = true
+            this.greska = null
             fetch("http://localhost:3000/user/"  ,requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     console.log("Xuser added")
                     console.log(result)
+                    this.saljem = false
+                    this.greska = null
                     this.$router.push("/login")
                 })
-                .catch(error => console.log('error in user add', error));
+                .catch(error => {
+                    console.log('error in user add', error)
+                    this.saljem = false
+                    this.greska = error.message
+                });
         }
     },
 }
@@ -117,8 +127,14 @@ export default {
             </tr>
         </table>
     </form> 
-    <div>
+    <div v-if="! saljem">
         <button @click="posalji_pod()">posalji</button>  
+    </div>
+    <div v-if="saljem">
+        Saljem podatke ..  
+    </div>
+    <div v-if="greska">
+        Doslo je do greske: {{ greska }}   
     </div>
 
 
